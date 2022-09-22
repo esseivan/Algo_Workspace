@@ -1,0 +1,1 @@
+C:\msys64\mingw64\bin\gcc.exe -fdiagnostics-color=always -std=c11 -g C:\Workspace\Algo_Workspace\TestFile1.c -o C:\Workspace\Algo_Workspace\TestFile1.exe -Wall
