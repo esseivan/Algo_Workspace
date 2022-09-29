@@ -6,6 +6,14 @@ int main(void)
 {
     printf("Hello World\n");
 
+    int32_t var1 = 23;
+    int32_t var2 = -554;
+    int32_t var3 = var1+var2;
+
+    printf("variables are : var1=%d and var2=%d\nAddition = %d\n", 
+        var1, var2, var3);
+
+
 /*
     uint32_t x = 2, y = 9;
 
@@ -27,11 +35,10 @@ int main(void)
     printf("%d \n",1/3);
     printf("%d \n",b&6);
 
-*/
 
     int j = 7, k = 4;
     bool a = true, b = true;
 
-
+*/
     return 0;
 }
