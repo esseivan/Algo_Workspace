@@ -40,5 +40,6 @@ int main(void)
     bool a = true, b = true;
 
 */
+
     return 0;
 }
