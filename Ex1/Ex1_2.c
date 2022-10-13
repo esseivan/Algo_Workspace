@@ -7,9 +7,6 @@ u64_t getFactWithTable(u8_t n);
 
 // c)
 
-#define cFact0 1
-#define cFact1
-
 int main(void) {
 
     // a) 
