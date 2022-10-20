@@ -1,11 +1,11 @@
 // Ex 1.5
 
-
 #include <stdio.h>
 #include <stdint.h>
 
 int BubbleSort(uint16_t *A, int n);
 void PrintTableau(uint16_t *Tab, int n);
+void PrintTableau_Tab(uint16_t Tab[], int n); // Meme chose que l'autre fonction mais sous forme tableau
 void swap(uint16_t *a, uint16_t *b);
 
 int main(void)
@@ -33,6 +33,14 @@ void PrintTableau(uint16_t *Tab, int n)
 {
     for (int i = 0; i < n; i++)
     {
+        printf("%d; ", *(Tab + i));
+    }
+}
+
+void PrintTableau_Tab(uint16_t Tab[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
         printf("%d; ", Tab[i]);
     }
 }
@@ -53,9 +61,9 @@ int BubbleSort(uint16_t *Tab, int n)
         s = 0;
         for (int i = 1; i < n; i++)
         {
-            if (Tab[i] < Tab[i - 1])
+            if (*(Tab + i) < *(Tab + i - 1)) // Dereferenciation
             {
-                swap(&Tab[i], &Tab[i - 1]);
+                swap((Tab + i), (Tab + i - 1)); // Envoi des adresses
                 permutations++;
                 s++;
             }
