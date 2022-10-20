@@ -1,9 +1,8 @@
 /*
  * Tower Of Hanoi
- * Description :
+ * Description : Exercice de tour d'Hanoi, deplacement d'anneaux
  * Author : Esseiva Nicolas
  * Date : 20.10.22
- *
  */
 
 #include <stdio.h>

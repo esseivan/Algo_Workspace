@@ -1,0 +1,67 @@
+// Ex 1.5
+
+
+#include <stdio.h>
+#include <stdint.h>
+
+int BubbleSort(uint16_t *A, int n);
+void PrintTableau(uint16_t *Tab, int n);
+void swap(uint16_t *a, uint16_t *b);
+
+int main(void)
+{
+    uint16_t Tab[] = {28, 3, 45, 1, 5, 17, 33, 32, 42, 2};
+    int const n = sizeof(Tab) / sizeof(Tab[0]);
+
+    // Afficher tableau
+    printf("Tableau non trie : ");
+    PrintTableau(Tab, n);
+    printf("\n");
+
+    int permutations = BubbleSort(Tab, n);
+
+    printf("Tableau trie : ");
+    PrintTableau(Tab, n);
+    printf("\n");
+
+    printf("Le nombre de permutations requises pour trier le tableau est : %d", permutations);
+
+    return 0;
+}
+
+void PrintTableau(uint16_t *Tab, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d; ", Tab[i]);
+    }
+}
+
+void swap(uint16_t *a, uint16_t *b)
+{
+    uint16_t temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int BubbleSort(uint16_t *Tab, int n)
+{
+    int permutations = 0;
+    int s = 0;
+    do
+    {
+        s = 0;
+        for (int i = 1; i < n; i++)
+        {
+            if (Tab[i] < Tab[i - 1])
+            {
+                swap(&Tab[i], &Tab[i - 1]);
+                permutations++;
+                s++;
+            }
+        }
+
+    } while (s != 0);
+
+    return permutations;
+}
