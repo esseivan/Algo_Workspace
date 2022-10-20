@@ -10,6 +10,7 @@
         "${file}",
         "-Wall",
         "-Wextra",
+        "-Wshadow",
         "-std=c11",
         "-o",
         "${fileDirname}\\${fileBasenameNoExtension}.exe",
