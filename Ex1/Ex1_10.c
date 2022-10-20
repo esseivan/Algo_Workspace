@@ -1,6 +1,6 @@
 /*
  * Tower Of Hanoi
- * Description : 
+ * Description :
  * Author : Esseiva Nicolas
  * Date : 20.10.22
  *
@@ -11,13 +11,14 @@
 
 int toh(int disk, char src, char dest, char aux);
 
-
-int main(void) {
+int main(void)
+{
 
     int n = 0;
 
     char next = 'Y';
-    while (next == 'y' || next == 'Y') {
+    while (next == 'y' || next == 'Y')
+    {
 
         printf("Enter value :");
         scanf("%d", &n);
@@ -26,6 +27,7 @@ int main(void) {
 
         char src = 'A', dest = 'B', aux = 'C';
         int c = toh(n, src, dest, aux);
+
         printf("For n=%d, %d moves were necessary\r\n", n, c);
 
         printf("Continue ? Y to continue, N to exit :\r\n");
@@ -35,17 +37,21 @@ int main(void) {
     return 0;
 }
 
-int toh(int disk, char src, char dest, char aux) {
+int toh(int disk, char src, char dest, char aux)
+{
     int c = 0;
     if (disk == 1)
     {
         printf("Move disk %d from %c to %c\r\n", disk, src, dest);
         c++;
     }
-    else {
+    else
+    {
         c += toh(disk - 1, src, aux, dest);
+
         printf("Move disk %d from %c to %c\r\n", disk, src, dest);
         c++;
+
         c += toh(disk - 1, aux, dest, src);
     }
     return c;
