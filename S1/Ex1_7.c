@@ -69,7 +69,7 @@ int main(void)
 
     // d)
     pTime = localtime(&cTimeSec);
-    printf("d) Current week day is\t\t: %s", GetWeekDay(pTime->tm_wday));
+    printf("d) Current week day is\t\t: %s\n", GetWeekDay(pTime->tm_wday));
 
     return 0;
 }
