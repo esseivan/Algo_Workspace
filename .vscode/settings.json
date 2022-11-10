@@ -5,6 +5,9 @@
         "time.h": "c",
         "stdio.h": "c",
         "stdint.h": "c",
-        "cstdint": "c"
+        "cstdint": "c",
+        "compare": "c",
+        "concepts": "c",
+        "type_traits": "c"
     }
 }
