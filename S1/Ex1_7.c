@@ -2,13 +2,20 @@
 // Structure (time)
 
 #include <stdio.h>
+#include <stdint.h>
 #include <time.h>
 #include <limits.h>
+#include <string.h>
 
 // c)
 // Affiche le texte et la date
 void PrintTime(char *text, struct tm *const val)
 {
+    if (val == 0 || val == NULL)
+    {
+        printf("Invalid pointer !\n");
+        return;
+    }
     printf(text,
            val->tm_mday, val->tm_mon + 1, val->tm_year + 1900,
            val->tm_hour, val->tm_min, val->tm_sec);
@@ -46,7 +53,7 @@ int main(void)
 {
     // a)
     // recuperer le temps
-    time_t const cTimeSec = time(NULL);
+    int64_t const cTimeSec = time(NULL);
 
     // convertir dans la structure tm
     struct tm *const pCurrTime = localtime(&cTimeSec);
@@ -54,7 +61,7 @@ int main(void)
 
     // b)
     // Temps maximum
-    time_t const cTimeMaxSec = _I32_MAX;
+    int64_t const cTimeMaxSec = INT32_MAX;
     // convertir dans la structure tm
     struct tm *const pMaXTime = localtime(&cTimeMaxSec);
 

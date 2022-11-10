@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "string.h": "c",
+        "limits.h": "c",
+        "time.h": "c",
+        "stdio.h": "c",
+        "stdint.h": "c",
+        "cstdint": "c"
+    }
+}
