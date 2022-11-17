@@ -26,10 +26,11 @@ int FctNb = sizeof(TabFctOp) / sizeof(TabFctOp[0]);
 int main(void)
 {
     int x = 360;
-    int y = 5;
+    int y = 0;
 
     for (int i = 0; i < FctNb; i++)
     {
+        assert(NULL != TabFctOp[i]);
         // pFctOp pointeurFct = TabFct[i];
         long int result = TabFctOp[i](x, y);
         TabFctPrint[i](x, y);
@@ -45,7 +46,7 @@ long int mult(int val1, int val2)
 }
 long int div(int val1, int val2)
 {
-    assert(val2 != 0);
+    assert(0 != val2);
     return (long int)val1 / (long int)val2;
 }
 long int add(int val1, int val2)
