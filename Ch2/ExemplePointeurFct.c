@@ -2,6 +2,7 @@
 //
 
 #include <stdio.h>
+#include <assert.h>
 
 // Fonctions d'opération
 long int mult(int val1, int val2);
@@ -26,6 +27,7 @@ int main(void)
 {
     int x = 360;
     int y = 5;
+
     for (int i = 0; i < FctNb; i++)
     {
         // pFctOp pointeurFct = TabFct[i];
@@ -43,6 +45,7 @@ long int mult(int val1, int val2)
 }
 long int div(int val1, int val2)
 {
+    assert(val2 != 0);
     return (long int)val1 / (long int)val2;
 }
 long int add(int val1, int val2)
