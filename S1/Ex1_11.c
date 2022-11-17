@@ -1,4 +1,5 @@
 // Introduction aux structures
+// Calcul des aires d'un rectangle défini par 4 points
 
 #include <stdio.h>
 #include <stdint.h>
