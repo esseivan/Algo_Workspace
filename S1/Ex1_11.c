@@ -89,8 +89,8 @@ void printAddresses(rect_t *pRect)
 void swap(rect_t *var1, rect_t *var2)
 {
     rect_t temp = *var1; // Clonage de var1
-    *var1 = *var2;
-    *var2 = temp;
+    *var1 = *var2;       // Clonage de var2 vers var1
+    *var2 = temp;        // Clonage de temp vers var2
 }
 
 void sortRectangles(rect_t *pRect, uint16_t n)
