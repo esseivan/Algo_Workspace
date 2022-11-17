@@ -60,8 +60,9 @@ uint32_t CalculateArea_vect(rect_t *rectangle)
 
 uint32_t CalculateArea(rect_t *rectangle)
 {
-    int16_t d1 = rectangle->coord[1].x - rectangle->coord[0].x;
-    int16_t d2 = rectangle->coord[3].y - rectangle->coord[0].y;
+    // abs retourne un int (soit int32_t)
+    int32_t d1 = abs((int)rectangle->coord[1].x - (int)rectangle->coord[0].x);
+    int32_t d2 = abs((int)rectangle->coord[3].y - (int)rectangle->coord[0].y);
     uint32_t area = ((uint32_t)d1) * ((uint32_t)d2);
     rectangle->area = area;
     return area;
