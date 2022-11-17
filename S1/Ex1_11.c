@@ -49,12 +49,21 @@ rect_t createRect(point_t A, point_t B, point_t C, point_t D)
     return output;
 }
 
-uint32_t CalculateArea(rect_t *rectangle)
+uint32_t CalculateArea_vect(rect_t *rectangle)
 {
     vect_t AB = *calculateVect(&rectangle->coord[0], &rectangle->coord[1]);
     vect_t BC = *calculateVect(&rectangle->coord[1], &rectangle->coord[2]);
 
     uint32_t area = calculateNorm(&AB) * calculateNorm(&BC);
+    return area;
+}
+
+uint32_t CalculateArea(rect_t *rectangle)
+{
+    int16_t d1 = rectangle->coord[1].x - rectangle->coord[0].x;
+    int16_t d2 = rectangle->coord[3].y - rectangle->coord[0].y;
+    uint32_t area = ((uint32_t)d1) * ((uint32_t)d2);
+    rectangle->area = area;
     return area;
 }
 
