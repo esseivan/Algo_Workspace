@@ -12,6 +12,8 @@ double myfunc(char *Text)
     printf("%s", Text);
     scanf("%s", Argument);
     printf("\n");
+
+    // atof convertit un string en un double. Retourne 0 si erreur
     return atof(Argument);
 }
 
@@ -22,7 +24,6 @@ int main(void)
     char Text1[] = "\nPlease enter first operand : ";
     char Text2[] = "\nPlease enter second operand : ";
 
-    // atof convertit un string en un double. Retourne 0 si erreur
     double Number1 = myfunc(Text1);
     double Number2 = myfunc(Text2);
     double Result = Number1 + Number2;
