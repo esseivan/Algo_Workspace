@@ -58,7 +58,7 @@ double GetResult(calculator_t *parameters)
         return parameters->x - parameters->y;
     if ('x' == parameters->operation)
         return parameters->x * parameters->y;
-    // if ('/' == parameters->operation)
+    // if ('/' == parameters->operation) // Ligne non nécessaire comme c'est forcemment la dernière restante
     return parameters->x / parameters->y;
 }
 
