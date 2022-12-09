@@ -1,3 +1,10 @@
+/*
+ * Fichier : ex2_1.c
+ * Auteur : Esseiva Nicolas
+ * Date : 09.12.2022
+ * Description : Exercice 2.1, calculatrice simple avec utilisation des arguments
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -7,59 +14,57 @@ enum
     eArgumentCount = 4,
 };
 
-typedef struct
-{
-    double x;
-    double y;
-    char operation;
-} calculator_t;
-
+// Indique comment utiliser le programme à l'utilisateur
 void InformationFormat()
 {
-    printf("ex2_1.exe <Arg1> <Op> <Arg2>\n");
-    printf("\t- <Arg1> is first operand\n");
+    printf("ex2_1 <Arg1> <Op> <Arg2>\n");
+    printf("\t- <Arg1> is first operand. This operand cannot be 0\n");
     printf("\t- <Op> is the operation [+ - x /] to be performed on the <Arg1> and <Arg2>\n");
-    printf("\t- <Arg2> is second operand\n");
+    printf("\t- <Arg2> is second operand. This operand cannot be 0\n");
 }
 
-bool VerifyArguments(calculator_t *arguments)
+// Verifier la validité des arguments
+bool VerifyArguments(double x, double y, char operation)
 {
     bool valid = false;
     // Opérations valides
-    if (('+' == arguments->operation) ||
-        ('-' == arguments->operation) ||
-        ('x' == arguments->operation) ||
-        ('/' == arguments->operation))
+    if (('+' == operation) ||
+        ('-' == operation) ||
+        ('x' == operation) ||
+        ('/' == operation))
         valid = true;
 
     if (false == valid)
     {
-        printf("Operation '%c' inconnue.\n", arguments->operation);
-        InformationFormat();
+        printf("ERROR: Operation '%c' unknown.\n", operation);
         return false;
     }
 
-    // Division par 0
-    if ('/' == arguments->operation)
-        if (0 == arguments->y)
-        {
-            printf("Division par 0 impossible !\n");
-            return false;
-        }
+    // un operand 0
+    if ((0 == x) || (0 == y))
+    {
+        printf("ERROR: Operand is 0\n");
+        return false;
+    }
 
     return true;
 }
 
-double GetResult(calculator_t *parameters)
+// Calcul du résultat de l'opération
+double GetResult(double x, double y, char operation)
 {
-    if ('+' == parameters->operation)
-        return parameters->x + parameters->y;
-    if ('-' == parameters->operation)
-        return parameters->x - parameters->y;
-    if ('x' == parameters->operation)
-        return parameters->x * parameters->y;
-    // if ('/' == parameters->operation) // Ligne non nécessaire comme c'est forcemment la dernière restante
-    return parameters->x / parameters->y;
+    double result = x;
+
+    if ('+' == operation)
+        result += y;
+    else if ('-' == operation)
+        result -= y;
+    else if ('x' == operation)
+        result *= y;
+    else // '/' dernier restant
+        result /= y;
+
+    return result;
 }
 
 int main(int argc, char *argv[])
@@ -68,26 +73,25 @@ int main(int argc, char *argv[])
     {
         printf("ERROR : Invalid argument count\n");
         InformationFormat();
-        return 1;
+        return -2;
     }
 
-    double number1 = atof(argv[1]);
-    double number2 = atof(argv[3]);
+    double x = atof(argv[1]);
+    double y = atof(argv[3]);
     char operation = argv[2][0];
 
-    calculator_t parameters = {number1,
-                               number2,
-                               operation};
+    if (!VerifyArguments(x, y, operation))
+    {
+        InformationFormat();
+        return -1;
+    }
 
-    if (!VerifyArguments(&parameters))
-        return 2;
+    double result = GetResult(x, y, operation);
 
-    double result = GetResult(&parameters);
-
-    printf("%f %c %f = %f\n",
-           parameters.x,
-           parameters.operation,
-           parameters.y,
+    printf("Result of desired operation of %.4f %c %.4f = %.6f\n",
+           x,
+           operation,
+           y,
            result);
 
     return 0;

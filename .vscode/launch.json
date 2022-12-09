@@ -37,8 +37,8 @@
       "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
       "args": [
         "2",
-        "/",
-        "0"
+        "*",
+        "-3.14"
       ],
       "stopAtEntry": true,
       "cwd": "${fileDirname}",
