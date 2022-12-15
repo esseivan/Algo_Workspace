@@ -92,7 +92,7 @@ bool put(Data_t **ppList, Data_t newElement)
   if (NULL == pNew) // Allocation impossible
     return false;
 
-  *pNew = newElement;
+  *pNew = newElement; // Copie du nouvel element
   pNew->pNext = NULL; // Notre nouvel element sera le dernier
 
   if (NULL == *ppList) // Liste vide. Le nouvel element est le premier
