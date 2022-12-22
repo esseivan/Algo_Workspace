@@ -139,6 +139,12 @@ bool get(Data_t **ppList, Data_t *pElement)
 
 void showList(Data_t *pList)
 {
+  if (NULL == pList)
+  {
+    printf("No element in list !");
+    return;
+  }
+
   while (NULL != pList) // Stop quand plus d'element
   {
     printf("sensor=%d, value=%f, time=%ld\n",
