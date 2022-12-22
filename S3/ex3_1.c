@@ -119,7 +119,7 @@ bool put(Data_t **ppList, Data_t newElement)
 
 bool get(Data_t **ppList, Data_t *pElement)
 {
-  if (NULL == ppList) // Pointeur vers la liste null
+  if (NULL == *ppList) // Pointeur vers la liste null
     return false;
 
   Data_t *pFlow = *ppList; // Premier element de la liste
