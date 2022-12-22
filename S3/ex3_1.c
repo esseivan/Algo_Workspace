@@ -42,6 +42,10 @@ bool get(Data_t **ppList, Data_t *pElement);
 /// @return -
 void showList(Data_t *pList);
 
+/// @brief Ecriture des donnees dans un fichier
+/// @param pList is the pointer to the list pointer
+void writeInFile(Data_t *pList);
+
 int main(void)
 {
   // c)
@@ -61,6 +65,7 @@ int main(void)
   }
 
   showList(pList);
+  writeInFile(pList);
 
   for (int i = 0; i < 5; i++)
   {
@@ -123,7 +128,7 @@ bool get(Data_t **ppList, Data_t *pElement)
 
   // FIFO -> on retourne le premier element
   *pElement = *pFlow;
-  // Et on l'enleve
+  // Et on l'enleve, on adapte le debut de liste
   *ppList = pFlow->pNext;
 
   // Ne pas oublier de libérer la mémoire utilisée
@@ -144,4 +149,27 @@ void showList(Data_t *pList)
   }
 
   printf("\n");
+}
+
+void writeInFile(Data_t *pList)
+{
+  char const cFileName[] = "ex3_1.csv";
+  FILE *const pFile = fopen(cFileName, "w");
+  if (NULL == pFile)
+  {
+    printf("File not found!");
+    return;
+  }
+
+  Data_t *pFlow = pList;
+  while (NULL != pFlow) // Stop quand plus d'element
+  {
+    fprintf(pFile, "sensor=%d, value=%f, time=%ld\n",
+            pFlow->sensorNumber,
+            pFlow->sensorValue,
+            pFlow->time);
+    pFlow = pFlow->pNext; // Prochain element
+  }
+
+  fclose(pFile);
 }
