@@ -125,6 +125,8 @@ bool get(Data_t **ppList, Data_t *pElement)
   *pElement = *pFlow;
   // Et on l'enleve
   *ppList = pFlow->pNext;
+
+  // Ne pas oublier de libérer la mémoire utilisée
   free(pFlow);
 
   return true;
