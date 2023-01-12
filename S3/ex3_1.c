@@ -46,6 +46,11 @@ void showList(Data_t *pList);
 /// @param pList is the pointer to the list pointer
 void writeInFile(Data_t *pList);
 
+void printSensor(Data_t *sensor, char *text)
+{
+  printf("%s sensor=%d, value=%f, time=%ld\n", text, sensor->sensorNumber, sensor->sensorValue, sensor->time);
+}
+
 int main(void)
 {
   // c)
@@ -57,6 +62,7 @@ int main(void)
     element.sensorNumber = i; // just add some test values
     element.sensorValue = 0.1 * i * i;
     element.time = time(NULL) + i;
+    printSensor(&element, "Added sensor :");
     if (!put(&pList, element))
     {
       printf("No more memory\n");
@@ -64,9 +70,11 @@ int main(void)
     }
   }
 
+  printf("\nList :\n");
   showList(pList);
   writeInFile(pList);
 
+  printf("\nGet all :\n");
   for (int i = 0; i < 5; i++)
   {
     Data_t element2;
@@ -76,10 +84,11 @@ int main(void)
     }
     else
     {
-      printf("get: sensor=%d, value=%f, time=%ld\n", element2.sensorNumber, element2.sensorValue, element2.time);
+      printSensor(&element2, "get:");
     }
   }
 
+  printf("\nList :\n");
   showList(pList);
 
   return 0;
