@@ -183,7 +183,7 @@ void showList(Data_t *pList)
 
 void writeInFile(Data_t *pList)
 {
-    char const cFileName[] = "ex3_1.csv";
+    char const cFileName[] = "ex3_2.csv";
     FILE *const pFile = fopen(cFileName, "w");
     if (NULL == pFile)
     {
