@@ -1,30 +1,54 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-typedef struct
+typedef struct Node_s
 {
-    int x;
-} test_t;
+    int data;
+    struct Node_s *link;
+} Node_t;
 
-void test1(test_t x)
+typedef Node_t *HEAD_t;
+
+Node_t *createLifo(void)
 {
-    x.x = 50;
-    printf("%p\n", &x);
+    return NULL;
 }
 
-void test2(test_t *x)
+void push(Node_t **pHead, Node_t newElement)
 {
-    x->x = 50;
-    printf("%p\n", x);
+    Node_t *pNew = (Node_t *)malloc(sizeof(Node_t));
+
+    if (NULL == pNew)
+        exit(1);
+
+    pNew->data = newElement.data;
+    pNew->link = NULL;
+
+    if (NULL == *pHead)
+    {
+        *pHead = pNew;
+    }
+    else
+    {
+        Node_t *pFlow = *pHead;
+        while (NULL != pFlow->link)
+        {
+            pFlow = pFlow->link;
+        }
+        pFlow->link = pNew;
+    }
 }
 
 int main(void)
 {
-    test_t var = {1};
+    Node_t *pHead = createLifo();
 
-    printf("%p\n", &var);
-    test1(var);
-    test2(&var);
-    printf("%d", var.x);
+    // Test push
+    Node_t newElement;
+    newElement.data = 2;
+    push(&pHead, newElement);
+    newElement.data = 3;
+    push(&pHead, newElement);
 
     return 0;
 }
