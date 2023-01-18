@@ -39,6 +39,16 @@ void push(Node_t **pHead, Node_t newElement)
     }
 }
 
+void pop(Node_t *head, Node_t *pGet)
+{
+    Node_t *pTemp = head;
+    while (NULL != pTemp->link)
+    {
+        pTemp = pTemp->link;
+    }
+    pGet->data = pTemp->data;
+}
+
 int main(void)
 {
     Node_t *pHead = createLifo();
@@ -49,6 +59,9 @@ int main(void)
     push(&pHead, newElement);
     newElement.data = 3;
     push(&pHead, newElement);
+
+    char x = -129;
+    char y = x;
 
     return 0;
 }
