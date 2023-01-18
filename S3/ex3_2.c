@@ -110,7 +110,8 @@ bool put(Data_t **ppList, Data_t newElement)
     // LIFO : On va ajouter au début de la liste
 
     // Allocation de la memoire pour le nouvel element
-    Data_t *pNew = malloc(sizeof(Data_t));
+    Data_t *pNew = (Data_t *)malloc(sizeof(Data_t));
+
     if (NULL == pNew) // Allocation impossible
         return false;
 
