@@ -1,67 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node_s
+int *myFunc(void)
 {
-    int data;
-    struct Node_s *link;
-} Node_t;
-
-typedef Node_t *HEAD_t;
-
-Node_t *createLifo(void)
-{
-    return NULL;
-}
-
-void push(Node_t **pHead, Node_t newElement)
-{
-    Node_t *pNew = (Node_t *)malloc(sizeof(Node_t));
-
-    if (NULL == pNew)
-        exit(1);
-
-    pNew->data = newElement.data;
-    pNew->link = NULL;
-
-    if (NULL == *pHead)
-    {
-        *pHead = pNew;
-    }
-    else
-    {
-        Node_t *pFlow = *pHead;
-        while (NULL != pFlow->link)
-        {
-            pFlow = pFlow->link;
-        }
-        pFlow->link = pNew;
-    }
-}
-
-void pop(Node_t *head, Node_t *pGet)
-{
-    Node_t *pTemp = head;
-    while (NULL != pTemp->link)
-    {
-        pTemp = pTemp->link;
-    }
-    pGet->data = pTemp->data;
+    static int varD = 3;
+    varD++;
+    printf("func \t%p\n", &varD);
+    return &varD;
 }
 
 int main(void)
 {
-    Node_t *pHead = createLifo();
+    static int bss1;
+    static int bss2;
+    static int data1 = 1;
+    static int data2 = 1;
 
-    // Test push
-    Node_t newElement;
-    newElement.data = 2;
-    push(&pHead, newElement);
-    newElement.data = 3;
-    push(&pHead, newElement);
+    int *p = myFunc();
 
-    char x = -129;
-    char y = x;
+    printf(".bss\t%p %p\n", &bss1, &bss2);
+    printf(".data\t%p %p\n", &data1, &data2);
+
+    myFunc();
 
     return 0;
 }
