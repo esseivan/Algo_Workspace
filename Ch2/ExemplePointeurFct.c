@@ -16,10 +16,10 @@ void print_div(int val1, int val2);
 void print_add(int val1, int val2);
 void print_sub(int val1, int val2);
 
-typedef long int (*pFctOp)(int, int);
-typedef void (*pFctPrintOp)(int, int);
-pFctOp TabFctOp[] = {mult, div, add, sub};
-pFctPrintOp TabFctPrint[] = {print_mult, print_div, print_add, print_sub};
+typedef long int (*pFctOp_t)(int, int);
+typedef void (*pFctPrintOp_t)(int, int);
+pFctOp_t TabFctOp[] = {mult, div, add, sub};
+pFctPrintOp_t TabFctPrint[] = {print_mult, print_div, print_add, print_sub};
 // pFctOp TabFct[] = {&mult, &div, &add, &sub};
 int FctNb = sizeof(TabFctOp) / sizeof(TabFctOp[0]);
 
